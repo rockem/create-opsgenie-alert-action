@@ -1,0 +1,27 @@
+name: create-opsgenie-alert
+description: Create an OpsGenie Alert
+branding:
+  icon: 'bell'
+  color: 'purple'
+inputs:
+  api_key:
+    description: OpsGenie API key
+    required: true
+  alias:
+    description: Alias of the alert to close
+    required: true
+  message:
+    description: Alert's message
+    required: true
+  description:
+    description: Alert's description
+    required: false
+  priority:
+    description: Alert's priority (P1-P5)
+    required: true
+  tags:
+    description: Comma delimited list of tags
+    required: false
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

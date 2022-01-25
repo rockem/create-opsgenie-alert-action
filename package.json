@@ -1,0 +1,23 @@
+{
+  "name": "create-opsgenie-alert-action",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rockem/create-opsgenie-alert-action.git",
+  "author": "Eli Segal <eli.segal@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "compile": "NODE_OPTIONS=--openssl-legacy-provider ncc build index.js --license licenses.txt",
+    "lint": "eslint . --fix --ext .js",
+    "preversion": "yarn compile"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "opsgenie-sdk": "^0.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0"
+  }
+}
