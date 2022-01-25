@@ -4,27 +4,27 @@ This action creates a new OpsGenie alert
 
 ## Inputs
 
-### `api_key`
+#### `api_key`
 
 [**Required**] The api key provided by OpsGenie integration.
 
-### `alias`
+#### `alias`
 
 [**Required**] The alias for the alert.
 
-### `message`
+#### `message`
 
 [**Required**] The actual alert message.
 
-### `priority`
+#### `priority`
 
 [**Required**] Alert's priority, valid values: P1-P5.
 
-### `description`
+#### `description`
 
 The description for the new alert.
 
-### `tags`
+#### `tags`
 
 The tags for the new alert, separated by commas. 
 
