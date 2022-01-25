@@ -1,6 +1,6 @@
 # Create OpsGenie alert action
 
-This action creates new OpsGenie alert
+This action creates a new OpsGenie alert
 
 ## Inputs
 
@@ -10,23 +10,23 @@ This action creates new OpsGenie alert
 
 `alias`
 
-[**Required**] The alias of the alert we want to close.
+[**Required**] The alias for the alert.
 
 `message`
 
-[**Required**] The actual alert message
+[**Required**] The actual alert message.
 
 `priority`
 
-[**Required**] The alert's priority, valid values: P1-P5
+[**Required**] Alert's priority, valid values: P1-P5.
 
 `description`
 
-The description for the new alert
+The description for the new alert.
 
 `tags`
 
-The tags for the new alert separated by commas 
+The tags for the new alert, separated by commas. 
 
 ## Example usage
 ```
@@ -36,4 +36,5 @@ with:
     alias: timeout-alert-alias
     message: Activity exceeded timeout: exceeded 60 seconds
     priority: P2
+    tags: backend,timeout
 ``` 
