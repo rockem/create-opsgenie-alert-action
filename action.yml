@@ -1,4 +1,4 @@
-name: create-opsgenie-alert
+name: Create OpsGenie Alert
 description: Create an OpsGenie Alert
 branding:
   icon: 'bell'
