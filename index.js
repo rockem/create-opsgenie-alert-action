@@ -2,7 +2,8 @@ const core = require('@actions/core');
 const opsgenie = require('opsgenie-sdk');
 
 opsgenie.configure({
-    'api_key': core.getInput('api_key')
+    'api_key': core.getInput('api_key'),
+    'host': core.getInput('opsgenie_api_endpoint'),
 });
 
 const inputTags = () => {

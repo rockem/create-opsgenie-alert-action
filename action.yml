@@ -22,6 +22,10 @@ inputs:
   tags:
     description: Comma delimited list of tags
     required: false
+  opsgenie_api_endpoint:
+    description: Opsgenie API endpoint
+    required: false
+    default: https://api.opsgenie.com
 runs:
   using: 'node16'
   main: 'dist/index.js'
