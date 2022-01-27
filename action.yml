@@ -22,7 +22,7 @@ inputs:
   tags:
     description: Comma delimited list of tags
     required: false
-  opsgenie_eu:
+  using_eu_url:
     description: Boolean, true if using Opsgenie EU API endpoint
     required: false
     default: false
