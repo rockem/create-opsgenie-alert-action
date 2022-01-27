@@ -28,6 +28,10 @@ The description for the new alert.
 
 The tags for the new alert, separated by commas. 
 
+### `using_eu_url`
+
+Default value is false. Must set to true if required OpsGenie API endpoint is 'https://api.eu.opsgenie.com'.
+
 ## Example usage
 ```
 uses: rockem/create-opsgenie-alert-action@v1
