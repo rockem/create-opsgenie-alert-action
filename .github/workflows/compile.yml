@@ -18,8 +18,6 @@ jobs:
       - run: yarn global add @vercel/ncc
 
       - name: Compile modules
-        env:
-          NODE_OPTIONS: --openssl-legacy-provider
         run: ncc build index.js --license licenses.txt
 
       - name: Push compiled action
