@@ -1,0 +1,27 @@
+name: Compile
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - run: yarn install --prod
+      - run: yarn add -g @vercel/ncc
+
+      - name: Compile modules
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
+        run: ncc build index.js --license licenses.txt
+
+      - name: Push compiled action
+        run: git commit -am "Action compiled by ncc" && git push
+
