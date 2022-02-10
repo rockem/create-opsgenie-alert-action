@@ -21,5 +21,8 @@ jobs:
         run: ncc build index.js --license licenses.txt
 
       - name: Push compiled action
-        run: git commit -am "Action compiled by ncc" && git push
+        run: |
+          git config --global user.name 'CI'
+          git config --global user.email 'eli.segal@gmail.com'
+          git commit -am "ci:Action compiled by ncc" && git push
 

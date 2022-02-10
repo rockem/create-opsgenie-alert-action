@@ -55995,9 +55995,13 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(5127);
 const opsgenie = __nccwpck_require__(8393);
 
-opsgenie.configure({
-    'api_key': core.getInput('api_key')
-});
+
+connectionDetails = {'api_key': core.getInput('api_key')}
+if (core.getInput('using_eu_url')) {
+    connectionDetails.set('host', 'https://api.eu.opsgenie.com')
+ }
+ opsgenie.configure(connectionDetails)
+
 
 const inputTags = () => {
     const tags = core.getInput('tags');
