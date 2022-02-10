@@ -55996,9 +55996,9 @@ const core = __nccwpck_require__(9699);
 const opsgenie = __nccwpck_require__(3380);
 
 
-connectionDetails = {'api_key': core.getInput('api_key')}
+const connectionDetails = {'api_key': core.getInput('api_key')}
 if (core.getInput('using_eu_url')) {
-    connectionDetails.set('host', 'https://api.eu.opsgenie.com')
+    connectionDetails.host = 'https://api.eu.opsgenie.com'
 }
 opsgenie.configure(connectionDetails)
 
