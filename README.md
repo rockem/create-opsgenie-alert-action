@@ -38,7 +38,8 @@ uses: rockem/create-opsgenie-alert-action@v1
 with:
     api_key: ${{ secrets.OPSGENIE_API_KEY }}
     alias: timeout-alert-alias
-    message: Activity exceeded timeout: exceeded 60 seconds
+    message: > 
+        Activity exceeded timeout: exceeded 60 seconds
     priority: P2
     tags: backend,timeout
 ``` 

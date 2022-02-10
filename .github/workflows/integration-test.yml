@@ -1,0 +1,42 @@
+name: Integration Test
+
+on:
+  workflow_run:
+    workflows: [ "Compile" ]
+    branches: [ main ]
+    types:
+      - completed
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: yarn install
+
+      - name: Set alert values
+        run: |
+          export ALIAS=create-alert-int-test-$(date +%s)
+          export MESSAGE="Create alert integration test"
+          echo "ALERT_ALIAS=$(echo -n $ALIAS)" >> $GITHUB_ENV
+          echo "MESSAGE=$(echo -n $MESSAGE)" >> $GITHUB_ENV
+
+      - name: Create OpsGenie Alert
+        uses: rockem/create-opsgenie-alert-action@main
+        with:
+          api_key: ${{ secrets.OPSGENIE_API_KEY }}
+          alias: ${{ env.ALERT_ALIAS }}
+          message: ${{ env.MESSAGE }}
+          priority: P5
+
+      - name: Assert alert created
+        run: |
+          ./.github/workflows/assert_alert_created_with \
+          ${{ env.ALERT_ALIAS }} \
+          ${{ env.MESSAGE }} \
+          P5
+
