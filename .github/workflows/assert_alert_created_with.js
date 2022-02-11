@@ -1,4 +1,4 @@
-#!/bin/sh node
+#!/usr/bin/env node
 
 const opsgenie = require('opsgenie-sdk');
 const expect = require('chai').expect
