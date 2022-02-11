@@ -30,7 +30,8 @@ jobs:
         with:
           api_key: ${{ secrets.OPSGENIE_API_KEY }}
           alias: ${{ env.ALERT_ALIAS }}
-          message: ${{ env.MESSAGE }}
+          message: >
+            ${{ env.MESSAGE }}
           priority: P5
 
       - name: Assert alert created
