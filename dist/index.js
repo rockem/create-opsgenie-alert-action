@@ -55997,7 +55997,7 @@ const opsgenie = __nccwpck_require__(3380);
 
 
 const connectionDetails = {'api_key': core.getInput('api_key')}
-if (core.getInput('using_eu_url')) {
+if (core.getInput('using_eu_url') === 'true') {
     connectionDetails.host = 'https://api.eu.opsgenie.com'
 }
 opsgenie.configure(connectionDetails)
@@ -56021,7 +56021,7 @@ console.log(`Creating alert with: ${create_alert_request}`)
 
 opsgenie.alertV2.create(create_alert_request, function (error, alert) {
     if (error) {
-        core.setFailed(`ERROR: ${error.message}`);
+        core.setFailed(error.message);
     } else {
         console.log(`Request sent for creating new alert: ${create_alert_request.message}`);
     }
