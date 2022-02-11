@@ -25,7 +25,7 @@ inputs:
   using_eu_url:
     description: Boolean, true if using Opsgenie EU API endpoint
     required: false
-    default: false
+    default: 'false'
 runs:
   using: 'node16'
   main: 'dist/index.js'
