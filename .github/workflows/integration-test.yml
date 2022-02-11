@@ -30,8 +30,7 @@ jobs:
         with:
           api_key: ${{ secrets.OPSGENIE_API_KEY }}
           alias: ${{ env.ALERT_ALIAS }}
-          message: >
-            ${{ env.MESSAGE }}
+          message: ${{ env.MESSAGE }}
           priority: P5
 
       - name: Assert alert created
@@ -40,6 +39,6 @@ jobs:
         run: |
           ./.github/workflows/assert_alert_created_with.js \
           ${{ env.ALERT_ALIAS }} \
-          ${{ env.MESSAGE }} \
+          "${{ env.MESSAGE }}" \
           P5
 

@@ -20,7 +20,7 @@ opsgenie.alertV2.get(get_alert_identifier, function (error, alert) {
     if (error) {
         throw new Error(error.message);
     } else {
-        expect(message).to.equal(alert.data.message);
-        expect(priority).to.equal(alert.data.priority);
+        expect(alert.data.message).to.equal(message);
+        expect(alert.data.priority).to.equal(priority);
     }
 });
