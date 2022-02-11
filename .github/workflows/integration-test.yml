@@ -42,3 +42,8 @@ jobs:
           "${{ env.MESSAGE }}" \
           P5
 
+      - name: Delete test alert
+        env:
+          OPSGENIE_API_KEY: ${{ secrets.OPSGENIE_API_KEY }}
+        run: ./.github/workflows/delete_alert.js ${{ env.ALERT_ALIAS }}
+
