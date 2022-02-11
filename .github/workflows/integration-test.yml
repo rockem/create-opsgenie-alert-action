@@ -25,6 +25,10 @@ jobs:
           echo "ALERT_ALIAS=$(echo -n $ALIAS)" >> $GITHUB_ENV
           echo "MESSAGE=$(echo -n $MESSAGE)" >> $GITHUB_ENV
 
+      - run: echo EE=$OPSGENIE_API_KEY
+        env:
+          OPSGENIE_API_KEY: ${{ secrets.OPSGENIE_API_KEY }}
+
       - name: Create OpsGenie Alert
         uses: rockem/create-opsgenie-alert-action@main
         with:
