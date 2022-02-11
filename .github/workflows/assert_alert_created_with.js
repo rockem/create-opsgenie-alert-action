@@ -18,7 +18,7 @@ const get_alert_identifier = {
 
 opsgenie.alertV2.get(get_alert_identifier, function (error, alert) {
     if (error) {
-        console.log(`ERROR: ${error}`);
+        throw new Error(error);
     } else {
         expect(message).to.equal(alert.data.message);
         expect(priority).to.equal(alert.data.priority);
