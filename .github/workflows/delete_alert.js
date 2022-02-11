@@ -26,9 +26,8 @@ const alert_identifier = {
 
 opsgenie.alertV2.delete(alert_identifier, function (error, alert) {
     if (error) {
-        throw new Error(error.message);
+        console.log(`WARNING: Failed to request alert deletion with error: ${error.message}`)
     } else {
-        console.log(alert)
         console.log(`Sent request to delete alert with alias: ${alias}`)
     }
 });
