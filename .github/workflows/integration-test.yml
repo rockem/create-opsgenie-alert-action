@@ -39,7 +39,7 @@ jobs:
 
       - name: Assert alert created
         run: |
-          ./.github/workflows/assert_alert_created_with \
+          ./.github/workflows/assert_alert_created_with.js \
           ${{ env.ALERT_ALIAS }} \
           ${{ env.MESSAGE }} \
           P5
