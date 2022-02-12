@@ -13,9 +13,19 @@ const tags_map_from = (tag_string) =>
     !tag_string ? [] : tag_string.split(',').map(tag => tag.trim())
 
 
+
+const allInputs = () => {
+    let inputs = {}
+    for (let [k,v] of Object.entries(process.env)) {
+        if (k.startsWith('INPUT_')) {
+            inputs[k] = v;
+        }
+    }
+    return inputs;
+}
+
 const create_alert_request_from = (inputs) => {
     return {
-        core.getInput
         message: inputs.message,
         alias: inputs.alias,
         description: inputs.description,
@@ -35,7 +45,7 @@ const create_alert_request = {
 
 console.log(`Creating alert with: ${create_alert_request}`)
 
-opsgenie.alertV2.create(create_alert_request, function (error, alert) {
+opsgenie.alertV2.create(create_alert_request_from(allInputs()), function (error, alert) {
     if (error) {
         core.setFailed(error.message);
     } else {
