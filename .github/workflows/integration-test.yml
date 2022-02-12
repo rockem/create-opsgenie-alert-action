@@ -3,7 +3,6 @@ name: Integration Test
 on:
   workflow_run:
     workflows: [ "Compile" ]
-    branches: [ main ]
     types:
       - completed
 
