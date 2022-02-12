@@ -1,4 +1,4 @@
-import {RunOptions, RunTarget} from 'github-action-ts-run-api';
+const {RunOptions, RunTarget} = require('github-action-ts-run-api');
 
 const target = RunTarget.mainJsScript('action.yml');
 
