@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const opsgenie = require('opsgenie-sdk');
+const context = require('@actions/github').context;
 
 
 const connectionDetails = {'api_key': core.getInput('api_key')}
@@ -8,11 +9,20 @@ if (core.getInput('using_eu_url') === 'true') {
 }
 opsgenie.configure(connectionDetails)
 
-const inputTags = () => {
-    const tags = core.getInput('tags');
-    return !tags ? [] : tags.split(',').map(tag => {
-        return tag.trim()
-    })
+const tags_map_from = (tag_string) =>
+    !tag_string ? [] : tag_string.split(',').map(tag => tag.trim())
+
+
+const create_alert_request_from = (inputs) => {
+    return {
+        core.getInput
+        message: inputs.message,
+        alias: inputs.alias,
+        description: inputs.description,
+        priority: inputs.priority,
+        tags: tags_map_from(inputs.tags)
+
+    }
 }
 
 const create_alert_request = {
@@ -20,7 +30,7 @@ const create_alert_request = {
     alias: core.getInput('alias'),
     description: core.getInput('description'),
     priority: core.getInput('priority'),
-    tags: inputTags()
+    tags: tags_map_from()
 }
 
 console.log(`Creating alert with: ${create_alert_request}`)
