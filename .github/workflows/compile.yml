@@ -19,7 +19,7 @@ jobs:
           node-version: '16'
 
       - run: yarn install --prod
-      - run: yarn global add @vercel/ncc
+      - run: yarn global add @vercel/ncc@0.33.1
 
       - name: Compile modules
         run: ncc build index.js --license licenses.txt
