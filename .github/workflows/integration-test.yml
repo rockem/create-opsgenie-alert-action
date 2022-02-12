@@ -25,7 +25,7 @@ jobs:
           echo "MESSAGE=$(echo -n $MESSAGE)" >> $GITHUB_ENV
 
       - name: Create OpsGenie Alert
-        uses: rockem/create-opsgenie-alert-action@main
+        uses: rockem/create-opsgenie-alert-action@$GITHUB_REF
         with:
           api_key: ${{ secrets.OPSGENIE_API_KEY }}
           alias: ${{ env.ALERT_ALIAS }}
