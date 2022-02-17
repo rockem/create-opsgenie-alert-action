@@ -18,6 +18,7 @@
     "opsgenie-sdk": "^0.5.0"
   },
   "devDependencies": {
+    "@vercel/ncc": "^0.33.3",
     "chai": "^4.3.6",
     "eslint": "^8.7.0"
   }
