@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const opsgenie = require('opsgenie-sdk');
 const {connectionOptions} = require("./src/connection");
+const {createAlertRequestFrom} = require("./src/alert");
 
 opsgenie.configure(
   connectionOptions(core.getInput('api_key'), core.getInput('using_eu_url')))
@@ -17,16 +18,18 @@ const create_alert_request = {
     alias: core.getInput('alias'),
     description: core.getInput('description'),
     priority: core.getInput('priority'),
-    tags: inputTags()
+    tags: core.getInput('tags')
 }
 
-console.log(`Creating alert with: ${JSON.stringify(create_alert_request)}`)
+const alertRequest = createAlertRequestFrom(create_alert_request);
 
-opsgenie.alertV2.create(create_alert_request, function (error, alert) {
+console.log(`Creating alert with: ${JSON.stringify(alertRequest)}`)
+
+opsgenie.alertV2.create(alertRequest, function (error, alert) {
     if (error) {
         core.setFailed(error.message);
     } else {
-        console.log(`Request sent for creating new alert: ${create_alert_request.message}`);
+        console.log(`Request sent for creating new alert: ${alertRequest.message}`);
     }
 });
 
