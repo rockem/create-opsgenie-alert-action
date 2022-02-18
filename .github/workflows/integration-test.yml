@@ -32,6 +32,7 @@ jobs:
           message: ${{ env.MESSAGE }}
           priority: P5
           tags: kuku
+          using_eu_url: false
 
       - name: Assert alert created
         env:
