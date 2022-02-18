@@ -6,13 +6,6 @@ const {createAlertRequestFrom} = require("./src/alert");
 opsgenie.configure(
   connectionOptions(core.getInput('api_key'), core.getInput('using_eu_url')))
 
-const inputTags = () => {
-    const tags = core.getInput('tags');
-    return !tags ? [] : tags.split(',').map(tag => {
-        return tag.trim();
-    })
-}
-
 const allInputs = () => {
     const inputs = {}
     for (let [k,v] of Object.entries(process.env)) {
@@ -27,7 +20,7 @@ const alertRequest = createAlertRequestFrom(allInputs());
 
 console.log(`Creating alert with: ${JSON.stringify(alertRequest)}`)
 
-opsgenie.alertV2.create(alertRequest, function (error, alert) {
+opsgenie.alertV2.create(alertRequest, function (error, _) {
     if (error) {
         core.setFailed(error.message);
     } else {
