@@ -1,12 +1,8 @@
 const core = require('@actions/core');
 const opsgenie = require('opsgenie-sdk');
+const {connectionOptions} = require("./src/connection");
 
-
-const connectionDetails = {'api_key': core.getInput('api_key')}
-if (core.getInput('using_eu_url') === 'true') {
-    connectionDetails.host = 'https://api.eu.opsgenie.com'
-}
-opsgenie.configure(connectionDetails)
+opsgenie.configure(connectionOptions(core.getInput('using_eu_url')))
 
 const inputTags = () => {
     const tags = core.getInput('tags');
