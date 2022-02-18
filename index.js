@@ -17,7 +17,7 @@ const allInputs = () => {
     const inputs = {}
     for (let [k,v] of Object.entries(process.env)) {
         if (k.startsWith('INPUT_')) {
-            inputs[v.toLowerCase().substring(6)] = v;
+            inputs[k.toLowerCase().substring(6)] = v;
         }
     }
     return inputs;
