@@ -18,7 +18,7 @@ const create_alert_request = {
     alias: core.getInput('alias'),
     description: core.getInput('description'),
     priority: core.getInput('priority'),
-    tags: core.getInput('tags')
+    tags: [core.getInput('tags')]
 }
 
 const alertRequest = createAlertRequestFrom(create_alert_request);
