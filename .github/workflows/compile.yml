@@ -1,8 +1,7 @@
 name: Compile
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   compile:
