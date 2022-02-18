@@ -9,7 +9,7 @@ opsgenie.configure(
 const inputTags = () => {
     const tags = core.getInput('tags');
     return !tags ? [] : tags.split(',').map(tag => {
-        return tag.trim()
+        return tag.trim();
     })
 }
 
@@ -17,7 +17,7 @@ const allInputs = () => {
     const inputs = {}
     for (let [k,v] of Object.entries(process.env)) {
         if (k.startsWith('INPUT_')) {
-            inputs[k] = v;
+            inputs[k] = v.toLowerCase().substring(6);
         }
     }
     return inputs;
