@@ -13,15 +13,17 @@ const inputTags = () => {
     })
 }
 
-const create_alert_request = {
-    message: core.getInput('message'),
-    alias: core.getInput('alias'),
-    description: core.getInput('description'),
-    priority: core.getInput('priority'),
-    tags: [core.getInput('tags')]
+const allInputs = () => {
+    const inputs = {}
+    for (let [k,v] of Object.entries(process.env)) {
+        if (k.startsWith('INPUT_')) {
+            inputs[k] = v;
+        }
+    }
+    return inputs;
 }
 
-const alertRequest = createAlertRequestFrom(create_alert_request);
+const alertRequest = createAlertRequestFrom(allInputs());
 
 console.log(`Creating alert with: ${JSON.stringify(alertRequest)}`)
 
