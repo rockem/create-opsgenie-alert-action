@@ -23,7 +23,7 @@ const create_alert_request = {
     tags: inputTags()
 }
 
-console.log(`Creating alert with: ${create_alert_request}`)
+console.log(`Creating alert with: ${create_alert_request.toString()}`)
 
 opsgenie.alertV2.create(create_alert_request, function (error, alert) {
     if (error) {
