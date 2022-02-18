@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const opsgenie = require('opsgenie-sdk');
 
 
-const connectionDetails = {'api_key': core.getInput('api_key')}
+connectionDetails = {'api_key': core.getInput('api_key')}
 if (core.getInput('using_eu_url') === 'true') {
     connectionDetails.host = 'https://api.eu.opsgenie.com'
 }
