@@ -6,6 +6,7 @@ const expect = require('chai').expect
 const alias = process.argv[2];
 const message = process.argv[3];
 const priority = process.argv[4];
+const tag = process.argv[5];
 
 opsgenie.configure({
     api_key: process.env.OPSGENIE_API_KEY
@@ -22,5 +23,6 @@ opsgenie.alertV2.get(get_alert_identifier, function (error, alert) {
     } else {
         expect(alert.data.message).to.equal(message);
         expect(alert.data.priority).to.equal(priority);
+        expect(alert.data.tags).to.include(tag);
     }
 });

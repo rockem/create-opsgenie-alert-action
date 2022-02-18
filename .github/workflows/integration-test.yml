@@ -1,11 +1,10 @@
 name: Integration Test
 
 on:
-  workflow_run:
-    workflows: [ "Compile" ]
+  pull_request:
     branches: [ main ]
-    types:
-      - completed
+  push:
+    branches: [ main ]
 
 jobs:
   test:
@@ -16,7 +15,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - run: yarn install
+      - run: yarn
+      - run: yarn compile
 
       - name: Set alert values
         run: |
@@ -26,12 +26,14 @@ jobs:
           echo "MESSAGE=$(echo -n $MESSAGE)" >> $GITHUB_ENV
 
       - name: Create OpsGenie Alert
-        uses: rockem/create-opsgenie-alert-action@main
+        uses: ./.github/actions/my-action
         with:
           api_key: ${{ secrets.OPSGENIE_API_KEY }}
           alias: ${{ env.ALERT_ALIAS }}
           message: ${{ env.MESSAGE }}
           priority: P5
+          tags: kuku
+          use_eu_url: false
 
       - name: Assert alert created
         env:
@@ -40,10 +42,6 @@ jobs:
           ./.github/workflows/assert_alert_created_with.js \
           ${{ env.ALERT_ALIAS }} \
           "${{ env.MESSAGE }}" \
-          P5
-
-      - name: Delete test alert
-        env:
-          OPSGENIE_API_KEY: ${{ secrets.OPSGENIE_API_KEY }}
-        run: ./.github/workflows/delete_alert.js ${{ env.ALERT_ALIAS }}
+          P5 \
+          kuku
 
