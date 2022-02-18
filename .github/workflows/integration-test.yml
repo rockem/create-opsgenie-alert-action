@@ -9,7 +9,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -26,14 +25,14 @@ jobs:
           echo "MESSAGE=$(echo -n $MESSAGE)" >> $GITHUB_ENV
 
       - name: Create OpsGenie Alert
-        uses: ./.github/actions/my-action
+        uses: ./
         with:
           api_key: ${{ secrets.OPSGENIE_API_KEY }}
           alias: ${{ env.ALERT_ALIAS }}
           message: ${{ env.MESSAGE }}
           priority: P5
           tags: kuku
-          use_eu_url: false
+          using_eu_url: false
 
       - name: Assert alert created
         env:

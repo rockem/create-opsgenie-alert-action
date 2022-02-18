@@ -6,7 +6,7 @@
   "author": "Eli Segal <eli.segal@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "compile": "NODE_OPTIONS=--openssl-legacy-provider ncc build index.js --license licenses.txt",
+    "compile": "ncc build index.js --license licenses.txt",
     "lint": "eslint . --fix --ext .js",
     "preversion": "rm -Rf node_modules && yarn --prod && yarn compile"
   },
