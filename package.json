@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "compile": "ncc build index.js --license licenses.txt",
-    "lint": "eslint . --fix --ext .js",
+    "lint": "eslint . --ext .js",
+    "test": "mocha",
     "preversion": "rm -Rf node_modules && yarn --prod && yarn compile"
   },
   "engines": {
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@vercel/ncc": "^0.33.3",
     "chai": "^4.3.6",
-    "eslint": "^8.7.0"
+    "eslint": "^8.7.0",
+    "mocha": "^9.2.0"
   }
 }

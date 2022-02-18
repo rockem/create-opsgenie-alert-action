@@ -1,13 +1,25 @@
-name: Integration Test
+name: Tests
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  test:
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: yarn
+      - run: yarn test
+
+  integration-test:
+    needs: unit-tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -43,4 +55,3 @@ jobs:
           "${{ env.MESSAGE }}" \
           P5 \
           kuku
-
