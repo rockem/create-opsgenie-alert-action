@@ -25,7 +25,7 @@ jobs:
           echo "MESSAGE=$(echo -n $MESSAGE)" >> $GITHUB_ENV
 
       - name: Create OpsGenie Alert
-        uses: ./.github/actions/my-action
+        uses: ./
         with:
           api_key: ${{ secrets.OPSGENIE_API_KEY }}
           alias: ${{ env.ALERT_ALIAS }}
