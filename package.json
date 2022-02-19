@@ -9,7 +9,7 @@
     "compile": "ncc build index.js --license licenses.txt",
     "lint": "eslint . --ext .js",
     "test": "mocha",
-    "preversion": "rm -Rf node_modules && yarn --prod && yarn compile"
+    "preversion": "rm -Rf node_modules && yarn && yarn compile"
   },
   "engines": {
     "node": ">=16"
