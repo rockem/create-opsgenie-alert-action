@@ -28,6 +28,6 @@ jobs:
         run: |
           git config --global user.name 'CI'
           git config --global user.email 'eli.segal@gmail.com'
-          git diff --quiet HEAD || git commit -am "ci:Action compiled by ncc"
+          git diff --quiet HEAD || git commit -am "ci:Action compiled by ncc [skip ci]"
           git push
 
