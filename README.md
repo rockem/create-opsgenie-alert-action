@@ -1,4 +1,6 @@
 # Create OpsGenie alert action
+[![Tests](https://github.com/rockem/create-opsgenie-alert-action/actions/workflows/test.yml/badge.svg)](https://github.com/rockem/create-opsgenie-alert-action/actions/workflows/test.yml)
+[![Compile](https://github.com/rockem/create-opsgenie-alert-action/actions/workflows/compile.yml/badge.svg)](https://github.com/rockem/create-opsgenie-alert-action/actions/workflows/compile.yml)
 
 This action creates a new OpsGenie alert
 

@@ -19,7 +19,6 @@ jobs:
       - run: yarn test
 
   integration-test:
-    needs: unit-tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
