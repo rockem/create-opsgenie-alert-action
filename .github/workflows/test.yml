@@ -35,6 +35,7 @@ jobs:
           export SOURCE="create alert integration test"
           echo "ALERT_ALIAS=$(echo -n $ALIAS)" >> $GITHUB_ENV
           echo "MESSAGE=$(echo -n $MESSAGE)" >> $GITHUB_ENV
+          echo "SOURCE=$(echo -n $SOURCE)" >> $GITHUB_ENV
 
       - name: Create OpsGenie Alert
         uses: ./
