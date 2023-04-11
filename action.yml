@@ -16,6 +16,9 @@ inputs:
   description:
     description: Alert's description
     required: false
+  source:
+    description: Alert's source. default is IP address of incoming request
+    required: false
   priority:
     description: Alert's priority (P1-P5)
     required: true

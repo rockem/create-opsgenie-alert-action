@@ -13,7 +13,7 @@ This action creates a new OpsGenie alert
 #### `alias`
 
 [**Required**] The alias for the alert.
-
+    
 #### `message`
 
 [**Required**] The actual alert message.
