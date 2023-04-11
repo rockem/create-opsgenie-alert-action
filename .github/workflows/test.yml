@@ -56,4 +56,4 @@ jobs:
           "${{ env.MESSAGE }}" \
           P5 \
           kuku \ 
-          "${{ SOURCE }}"
+          "${{ env.SOURCE }}"
