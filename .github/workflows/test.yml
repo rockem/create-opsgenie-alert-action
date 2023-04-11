@@ -41,7 +41,7 @@ jobs:
           api_key: ${{ secrets.OPSGENIE_API_KEY }}
           alias: ${{ env.ALERT_ALIAS }}
           message: ${{ env.MESSAGE }}
-          source: create alert IT
+          source: create alert integration test
           priority: P5
           tags: kuku
           using_eu_url: false
