@@ -32,6 +32,7 @@ jobs:
         run: |
           export ALIAS=create-alert-int-test-$(date +%s)
           export MESSAGE="Create alert integration test"
+          export SOURCE="create alert integration test"
           echo "ALERT_ALIAS=$(echo -n $ALIAS)" >> $GITHUB_ENV
           echo "MESSAGE=$(echo -n $MESSAGE)" >> $GITHUB_ENV
 
@@ -41,7 +42,7 @@ jobs:
           api_key: ${{ secrets.OPSGENIE_API_KEY }}
           alias: ${{ env.ALERT_ALIAS }}
           message: ${{ env.MESSAGE }}
-          source: create alert integration test
+          source: ${{ env.SOURCE }}
           priority: P5
           tags: kuku
           using_eu_url: false
@@ -54,4 +55,5 @@ jobs:
           ${{ env.ALERT_ALIAS }} \
           "${{ env.MESSAGE }}" \
           P5 \
-          kuku
+          kuku \ 
+          ${{ SOURCE }}
