@@ -56,5 +56,5 @@ jobs:
           ${{ env.ALERT_ALIAS }} \
           "${{ env.MESSAGE }}" \
           P5 \
-          kuku \ 
+          kuku \
           "${{ env.SOURCE }}"
