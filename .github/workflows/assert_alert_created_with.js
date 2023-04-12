@@ -9,8 +9,6 @@ const priority = process.argv[4];
 const tag = process.argv[5];
 const source = process.argv[6];
 
-console.log(`source: ${source}`)
-
 opsgenie.configure({
     api_key: process.env.OPSGENIE_API_KEY
 })
