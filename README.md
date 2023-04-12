@@ -18,6 +18,10 @@ This action creates a new OpsGenie alert
 
 [**Required**] The actual alert message.
 
+#### `source`
+
+Alert's source. default is IP address of incoming request.
+
 #### `priority`
 
 [**Required**] Alert's priority, valid values: P1-P5.
