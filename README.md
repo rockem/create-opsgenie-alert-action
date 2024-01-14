@@ -39,7 +39,7 @@ The tags for the new alert, separated by commas.
 Default value is false. Must set to true if required OpsGenie API endpoint is 'https://api.eu.opsgenie.com'.
 
 ## Example usage
-```
+```yaml
 uses: rockem/create-opsgenie-alert-action@v1
 with:
     api_key: ${{ secrets.OPSGENIE_API_KEY }}
