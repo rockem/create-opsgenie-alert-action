@@ -14,7 +14,7 @@ jobs:
           token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: "18"
 
       - name: Compile action
         run: |
@@ -29,4 +29,3 @@ jobs:
           git config --global user.email 'eli.segal@gmail.com'
           git diff --quiet HEAD || git commit -am "ci:Action compiled by ncc [skip ci]"
           git push
-

@@ -1,8 +1,8 @@
 name: Create OpsGenie Alert
 description: Create an OpsGenie Alert
 branding:
-  icon: 'bell'
-  color: 'purple'
+  icon: "bell"
+  color: "purple"
 inputs:
   api_key:
     description: OpsGenie API key
@@ -28,7 +28,7 @@ inputs:
   using_eu_url:
     description: Boolean, true if using Opsgenie EU API endpoint
     required: false
-    default: 'false'
+    default: "false"
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node16"
+  main: "dist/index.js"
