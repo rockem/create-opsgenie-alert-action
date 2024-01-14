@@ -78739,40 +78739,46 @@ define(function () {
 /***/ ((module) => {
 
 function createArrayFrom(tags) {
-  return !tags ? [] : tags.split(',').map(tag => {
-    return tag.trim();
-  })
+  return !tags
+    ? []
+    : tags.split(",").map((tag) => {
+        return tag.trim();
+      });
 }
 
 const createAlertRequestFrom = (alertDetails) => {
   const request = {};
-  Object.assign(request, alertDetails, {tags: createArrayFrom(alertDetails.tags)});
+  Object.assign(request, alertDetails, {
+    tags: createArrayFrom(alertDetails.tags),
+  });
   return request;
-}
+};
 
 module.exports = {
-  createAlertRequestFrom
-}
+  createAlertRequestFrom,
+};
+
 
 /***/ }),
 
 /***/ 6496:
 /***/ ((module) => {
 
-const OPSGENIE_EU_URL = 'https://api.eu.opsgenie.com';
+const OPSGENIE_EU_URL = "https://api.eu.opsgenie.com";
 
 const createConnectionOptions = (api_key, using_eu_url) => {
-  const connectionDetails = {'api_key': api_key}
-  if (using_eu_url === 'true') {
+  const connectionDetails = { api_key: api_key };
+  if (using_eu_url === "true") {
     connectionDetails.host = OPSGENIE_EU_URL;
   }
   return connectionDetails;
-}
+};
 
 module.exports = {
   connectionOptions: createConnectionOptions,
-  OPSGENIE_EU_URL
-}
+  OPSGENIE_EU_URL,
+};
+
 
 /***/ }),
 
@@ -80882,34 +80888,34 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(2186);
 const opsgenie = __nccwpck_require__(5963);
-const {connectionOptions} = __nccwpck_require__(6496);
-const {createAlertRequestFrom} = __nccwpck_require__(4199);
+const { connectionOptions } = __nccwpck_require__(6496);
+const { createAlertRequestFrom } = __nccwpck_require__(4199);
 
 opsgenie.configure(
-  connectionOptions(core.getInput('api_key'), core.getInput('using_eu_url')))
+  connectionOptions(core.getInput("api_key"), core.getInput("using_eu_url")),
+);
 
 const allInputs = () => {
-    const inputs = {}
-    for (let [k,v] of Object.entries(process.env)) {
-        if (k.startsWith('INPUT_')) {
-            inputs[k.toLowerCase().substring(6)] = v;
-        }
+  const inputs = {};
+  for (let [k, v] of Object.entries(process.env)) {
+    if (k.startsWith("INPUT_")) {
+      inputs[k.toLowerCase().substring(6)] = v;
     }
-    return inputs;
-}
+  }
+  return inputs;
+};
 
 const alertRequest = createAlertRequestFrom(allInputs());
 
-console.log(`Creating alert with: ${JSON.stringify(alertRequest)}`)
+console.log(`Creating alert with: ${JSON.stringify(alertRequest)}`);
 
 opsgenie.alertV2.create(alertRequest, function (error, _) {
-    if (error) {
-        core.setFailed(error.message);
-    } else {
-        console.log(`Request sent for creating new alert: ${alertRequest.message}`);
-    }
+  if (error) {
+    core.setFailed(error.message);
+  } else {
+    console.log(`Request sent for creating new alert: ${alertRequest.message}`);
+  }
 });
-
 
 })();
 
