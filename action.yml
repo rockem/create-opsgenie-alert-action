@@ -9,7 +9,7 @@ inputs:
     required: true
   alias:
     description: Alias of the alert to close
-    required: true
+    required: false
   message:
     description: Alert's message
     required: true
@@ -21,7 +21,7 @@ inputs:
     required: false
   priority:
     description: Alert's priority (P1-P5)
-    required: true
+    required: false
   tags:
     description: Comma delimited list of tags
     required: false
