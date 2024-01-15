@@ -22,7 +22,7 @@ This GitHub Action allows you to create alerts in [OpsGenie](https://www.atlassi
 - **\`api_key\`** (Required): Your OpsGenie API key. It is recommended to store this as a secret in your GitHub repository.
 - **\`message\`** (Required): The short alert message.
 - **\`description\`**: A longer description of the alert.
-- **\`alias\`**: A unique identifier for the alert. If not provided, one will be generated based on the timestamp.
+- **\`alias\`**: A unique identifier for the alert. Can be used for alert de-duplication.
 - **\`source\`**: The source of the alert. Defaults to IP address of incoming request.
 - **\`tags\`**: Tags of the alert, separated by commas.
 - **\`priority\`**: Priority level of the alert. Possible values are P1, P2, P3, P4 and P5. Default value is P3.
