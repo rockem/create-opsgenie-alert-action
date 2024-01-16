@@ -6,6 +6,7 @@
 This GitHub Action allows you to create alerts in [OpsGenie](https://www.atlassian.com/software/opsgenie) as part of your GitHub Actions workflows.
 
 ## Usage
+
 ```yaml
 - name: Create OpsGenie Alert
   uses: rockem/create-opsgenie-alert-action@v1
@@ -29,11 +30,13 @@ This GitHub Action allows you to create alerts in [OpsGenie](https://www.atlassi
 - **\`using_eu_url\`**: Set the action to use OpsGenie europe endpoint 'https://api.eu.opsgenie.com'. Defaults to false
 
 ## Resources
+
 - Create OpsGenie API key: [Create an API integration](https://support.atlassian.com/opsgenie/docs/create-a-default-api-integration/)
 - OpsGenie's [AlertAPI](https://docs.opsgenie.com/docs/alert-api)
 - Compile files into a single file: [ncc](https://github.com/vercel/ncc)
 
 ## License
+
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
