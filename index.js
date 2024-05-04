@@ -21,10 +21,11 @@ const alertRequest = createAlertRequestFrom(allInputs());
 
 console.log(`Creating alert with: ${JSON.stringify(alertRequest)}`);
 
-opsgenie.alertV2.create(alertRequest, function (error, _) {
+opsgenie.alertV2.create(alertRequest, function (error, result) {
   if (error) {
     core.setFailed(error.message);
   } else {
     console.log(`Request sent for creating new alert: ${alertRequest.message}`);
+    core.setOutput("alert_id", result.data.alertId);
   }
 });
