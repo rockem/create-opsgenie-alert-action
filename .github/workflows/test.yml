@@ -86,6 +86,6 @@ jobs:
           "${{ env.REQUIRED_VALUES_MESSAGE }}" \
           "" \
           "" \
-          P5 \
+          P3 \
           "" \
           ""
