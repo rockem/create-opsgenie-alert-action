@@ -22,6 +22,12 @@ const get_alert_identifier = (alert_id) => {
   };
 };
 
+const compare_optional_str = (actual, expected) => {
+  if (expected) {
+    expect(actual).to.equal(expected);
+  }
+};
+
 opsgenie.alertV2.getRequestStatus(request_id, function (error, status) {
   console.log(`RequestId: ${request_id}`);
   if (status.data.success !== true) {
@@ -34,17 +40,13 @@ opsgenie.alertV2.getRequestStatus(request_id, function (error, status) {
         throw new Error(error.message);
       } else {
         expect(alert.data.message).to.equal(message);
-        expect(alert.data.description).to.equal(description);
-        if (alias) {
-          expect(alert.data.alias).to.equal(alias);
-        } else {
-          expect(alert.data.alias).to.equal(alias);
-        }
-        expect(alert.data.priority).to.equal(priority);
+        compare_optional_str(alert.data.description, description);
+        compare_optional_str(alert.data.alias, alias);
+        compare_optional_str(alert.data.priority, priority);
         if (tag) {
           expect(alert.data.tags).to.include(tag);
         }
-        expect(alert.data.source).to.equal(source);
+        compare_optional_str(alert.data.source, source);
       }
     },
   );
