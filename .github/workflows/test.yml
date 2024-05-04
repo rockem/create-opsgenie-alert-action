@@ -74,6 +74,9 @@ jobs:
           api_key: ${{ secrets.OPSGENIE_API_KEY }}
           message: ${{ env.REQUIRED_VALUES_MESSAGE }}
 
+      - name: Throttle requests to opsgenie
+        run: sleep 2
+
       - name: Assert required values alert created
         env:
           OPSGENIE_API_KEY: ${{ secrets.OPSGENIE_API_KEY }}
