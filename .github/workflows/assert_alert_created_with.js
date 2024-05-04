@@ -3,8 +3,8 @@
 const opsgenie = require("opsgenie-sdk");
 const expect = require("chai").expect;
 
-const alias = process.argv[2];
-const message = process.argv[3];
+const message = process.argv[2];
+const alias = process.argv[3];
 const description = process.argv[4];
 const priority = process.argv[5];
 const tag = process.argv[6];
