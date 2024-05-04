@@ -23,6 +23,7 @@ const get_alert_identifier = (alert_id) => {
 };
 
 opsgenie.alertV2.getRequestStatus(request_id, function (_, status) {
+  console.log(JSON.stringify(status));
   if (status.data.success !== true) {
     throw new Error("Alert wasn't (yet?) created");
   }
