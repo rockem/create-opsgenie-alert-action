@@ -6,12 +6,16 @@ function createArrayFrom(tags) {
       });
 }
 
+function withoutEmptyProperties(obj) {
+  return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v !== ""));
+}
+
 const createAlertRequestFrom = (alertDetails) => {
   const request = {};
   Object.assign(request, alertDetails, {
     tags: createArrayFrom(alertDetails.tags),
   });
-  return request;
+  return withoutEmptyProperties(request);
 };
 
 module.exports = {
