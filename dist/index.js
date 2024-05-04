@@ -78964,12 +78964,16 @@ function createArrayFrom(tags) {
       });
 }
 
+function withoutEmptyProperties(obj) {
+  return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v !== ""));
+}
+
 const createAlertRequestFrom = (alertDetails) => {
   const request = {};
   Object.assign(request, alertDetails, {
     tags: createArrayFrom(alertDetails.tags),
   });
-  return request;
+  return withoutEmptyProperties(request);
 };
 
 module.exports = {
@@ -81127,11 +81131,12 @@ const alertRequest = createAlertRequestFrom(allInputs());
 
 console.log(`Creating alert with: ${JSON.stringify(alertRequest)}`);
 
-opsgenie.alertV2.create(alertRequest, function (error, _) {
+opsgenie.alertV2.create(alertRequest, function (error, result) {
   if (error) {
     core.setFailed(error.message);
   } else {
     console.log(`Request sent for creating new alert: ${alertRequest.message}`);
+    core.setOutput("request_id", result.requestId);
   }
 });
 
