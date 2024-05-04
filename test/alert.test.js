@@ -12,5 +12,10 @@ describe("Alert Request", () => {
       const request = createAlertRequestFrom({ tags: " kuku,popo " });
       expect(request.tags).to.include("kuku", "popo");
     });
+
+    it("should remove empty parameters from the request", () => {
+      const request = createAlertRequestFrom({ empty_value: "" });
+      expect(request).to.not.have.property("empty_value");
+    });
   });
 });
