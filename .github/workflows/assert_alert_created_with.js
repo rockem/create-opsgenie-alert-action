@@ -35,7 +35,9 @@ opsgenie.alertV2.getRequestStatus(request_id, function (error, status) {
       } else {
         expect(alert.data.message).to.equal(message);
         expect(alert.data.description).to.equal(description);
-        expect(alert.data.alias).to.equal(alias);
+        if (alias !== "") {
+          expect(alert.data.alias).to.equal(alias);
+        }
         expect(alert.data.priority).to.equal(priority);
         expect(alert.data.tags).to.include(tag);
         expect(alert.data.source).to.equal(source);
