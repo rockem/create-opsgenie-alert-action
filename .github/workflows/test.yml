@@ -58,7 +58,7 @@ jobs:
           OPSGENIE_API_KEY: ${{ secrets.OPSGENIE_API_KEY }}
         run: |
           ./.github/workflows/assert_alert_created_with.js \
-          "${{ env.MESSAGE }}" \
+          "${{ env.ALL_VALUES_MESSAGE }}" \
           ${{ env.ALERT_ALIAS }} \
           "${{ env.DESCRIPTION }}" \
           P5 \
@@ -76,7 +76,7 @@ jobs:
           OPSGENIE_API_KEY: ${{ secrets.OPSGENIE_API_KEY }}
         run: |
           ./.github/workflows/assert_alert_created_with.js \
-          "${{ env.MESSAGE }}" \
+          "${{ env.REQUIRED_VALUES_MESSAGE }}" \
           "" \
           "" \
           P5 \
