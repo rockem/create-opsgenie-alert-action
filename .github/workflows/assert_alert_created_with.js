@@ -28,9 +28,19 @@ const compare_optional_str = (actual, expected) => {
   }
 };
 
-opsgenie.alertV2.getRequestStatus(request_id, function (error, status) {
-  console.log(`RequestId: ${request_id}`);
-  if (status.data.success !== true) {
+function assert_created_alert(alert) {
+  expect(alert.data.message).to.equal(message);
+  compare_optional_str(alert.data.description, description);
+  compare_optional_str(alert.data.alias, alias);
+  compare_optional_str(alert.data.priority, priority);
+  if (tag) {
+    expect(alert.data.tags).to.include(tag);
+  }
+  compare_optional_str(alert.data.source, source);
+}
+
+opsgenie.alertV2.getRequestStatus(request_id, function (_, status) {
+  if (!status.data.success) {
     throw new Error("Alert wasn't (yet?) created");
   }
   opsgenie.alertV2.get(
@@ -39,14 +49,7 @@ opsgenie.alertV2.getRequestStatus(request_id, function (error, status) {
       if (error) {
         throw new Error(error.message);
       } else {
-        expect(alert.data.message).to.equal(message);
-        compare_optional_str(alert.data.description, description);
-        compare_optional_str(alert.data.alias, alias);
-        compare_optional_str(alert.data.priority, priority);
-        if (tag) {
-          expect(alert.data.tags).to.include(tag);
-        }
-        compare_optional_str(alert.data.source, source);
+        assert_created_alert(alert);
       }
     },
   );
