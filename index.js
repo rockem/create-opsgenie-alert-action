@@ -11,6 +11,13 @@ const allInputs = () => {
   const inputs = {};
   for (let [k, v] of Object.entries(process.env)) {
     if (k.startsWith("INPUT_")) {
+      try {
+        const parsedValue = JSON.parse(v);
+        if (Array.isArray(parsedValue)) {
+          inputs[k.toLowerCase().substring(6)] = parsedValue;
+          continue
+        }
+      } catch (error) {}
       inputs[k.toLowerCase().substring(6)] = v;
     }
   }

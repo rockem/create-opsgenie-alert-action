@@ -29,6 +29,10 @@ inputs:
     description: Boolean, true if using Opsgenie EU API endpoint
     required: false
     default: "false"
+  responders:
+    description: JSON string, representing an array of responders with type and name keys
+    required: false
+    default: "[]"
 runs:
   using: "node16"
   main: "dist/index.js"
