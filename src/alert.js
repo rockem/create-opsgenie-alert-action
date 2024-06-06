@@ -21,10 +21,7 @@ function createArrayFrom(tags) {
 
 function createResponderObjFrom(responderStr) {
   const parts = responderStr.split(":");
-  responderObj = {};
-  responderObj[parts[0]] = parts[1];
-  responderObj["type"] = parts[2];
-  return responderObj;
+  return { [parts[0]]: parts[1], type: parts[2] };
 }
 
 function withoutEmptyProperties(obj) {

@@ -41,7 +41,7 @@ function assert_created_alert(alert) {
     parts = responder.split(":");
     expect(alert.responders).to.deep.include({
       [parts[0]]: parts[1],
-      tyoe: parts[3],
+      type: parts[3],
     });
   }
   compare_optional_str(alert.data.source, source);
