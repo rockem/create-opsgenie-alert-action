@@ -1,3 +1,16 @@
+const createAlertRequestFrom = (alertDetails) => {
+  const request = {};
+
+  Object.assign(request, alertDetails, {
+    tags: createArrayFrom(alertDetails.tags),
+    responders: createArrayFrom(alertDetails.responders).map(
+      createResponderObjFrom,
+    ),
+  });
+
+  return withoutEmptyProperties(request);
+};
+
 function createArrayFrom(tags) {
   return !tags
     ? []
@@ -6,17 +19,17 @@ function createArrayFrom(tags) {
       });
 }
 
+function createResponderObjFrom(responderStr) {
+  const parts = responderStr.split(":");
+  responderObj = {};
+  responderObj[parts[0]] = parts[1];
+  responderObj["type"] = parts[2];
+  return responderObj;
+}
+
 function withoutEmptyProperties(obj) {
   return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v !== ""));
 }
-
-const createAlertRequestFrom = (alertDetails) => {
-  const request = {};
-  Object.assign(request, alertDetails, {
-    tags: createArrayFrom(alertDetails.tags),
-  });
-  return withoutEmptyProperties(request);
-};
 
 module.exports = {
   createAlertRequestFrom,

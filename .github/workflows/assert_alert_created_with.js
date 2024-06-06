@@ -10,6 +10,7 @@ const description = process.argv[5];
 const priority = process.argv[6];
 const tag = process.argv[7];
 const source = process.argv[8];
+const responder = process.argv[8];
 
 opsgenie.configure({
   api_key: process.env.OPSGENIE_API_KEY,
@@ -35,6 +36,13 @@ function assert_created_alert(alert) {
   compare_optional_str(alert.data.priority, priority);
   if (tag) {
     expect(alert.data.tags).to.include(tag);
+  }
+  if (responder) {
+    parts = responder.split(":");
+    expect(alert.responders).to.deep.include({
+      [parts[0]]: parts[1],
+      tyoe: parts[3],
+    });
   }
   compare_optional_str(alert.data.source, source);
 }
