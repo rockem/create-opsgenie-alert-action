@@ -41,7 +41,7 @@ jobs:
           echo "REQUIRED_VALUES_MESSAGE=$(echo -n REQUIRED_VALUES_MESSAGE)" >> $GITHUB_ENV
           echo "DESCRIPTION=$(echo -n $DESCRIPTION)" >> $GITHUB_ENV
           echo "SOURCE=$(echo -n $SOURCE)" >> $GITHUB_ENV
-          echo "RESPONDER=$(echo -n RESPONDER)" >> $GITHUB_ENV
+          echo "RESPONDER=$(echo -n $RESPONDER)" >> $GITHUB_ENV
 
       - name: Create OpsGenie Alert with All Values
         id: create-alert-all-values
