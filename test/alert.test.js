@@ -18,4 +18,16 @@ describe("Alert Request", () => {
       expect(request).to.not.have.property("empty_value");
     });
   });
+
+  describe("Responders", () => {
+    it("should retrieve array of multiple responders", () => {
+      const id = "7ea-3b";
+      const name = "popo";
+      const request = createAlertRequestFrom({
+        responders: `id:${id}:team, name:${name}:user`,
+      });
+      expect(request.responders).to.deep.include({ id: id, type: "team" });
+      expect(request.responders).to.deep.include({ name: name, type: "user" });
+    });
+  });
 });
