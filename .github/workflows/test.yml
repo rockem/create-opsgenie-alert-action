@@ -69,7 +69,7 @@ jobs:
           P5 \
           kuku \
           "${{ env.SOURCE }}" \
-          "${{ env.RESPONDERS }}"
+          "${{ env.RESPONDER }}"
 
       - name: Create OpsGenie Alert with Required Values
         id: create-alert-required-values
