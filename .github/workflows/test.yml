@@ -55,7 +55,7 @@ jobs:
           priority: P5
           tags: kuku
           using_eu_url: false
-          responders: ${{ env.RESPONDERS }}
+          responders: ${{ env.RESPONDER }}
 
       - name: Assert all values alert created
         env:
