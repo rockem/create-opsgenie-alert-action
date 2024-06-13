@@ -29,6 +29,9 @@ inputs:
     description: Boolean, true if using Opsgenie EU API endpoint
     required: false
     default: "false"
+  responders:
+    description: List of targets that the alert will be routed to
+    required: false
 runs:
   using: "node16"
   main: "dist/index.js"

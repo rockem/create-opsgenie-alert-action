@@ -25,7 +25,7 @@ opsgenie.alertV2.create(alertRequest, function (error, result) {
   if (error) {
     core.setFailed(error.message);
   } else {
-    console.log(`Request sent for creating new alert: ${alertRequest.message}`);
+    console.log(`Request sent for creating new alert: ${result.requestId}`);
     core.setOutput("request_id", result.requestId);
   }
 });
