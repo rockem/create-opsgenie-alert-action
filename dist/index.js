@@ -78956,6 +78956,19 @@ define(function () {
 /***/ 4199:
 /***/ ((module) => {
 
+const createAlertRequestFrom = (alertDetails) => {
+  const request = {};
+
+  Object.assign(request, alertDetails, {
+    tags: createArrayFrom(alertDetails.tags),
+    responders: createArrayFrom(alertDetails.responders).map(
+      createResponderObjFrom,
+    ),
+  });
+
+  return withoutEmptyProperties(request);
+};
+
 function createArrayFrom(tags) {
   return !tags
     ? []
@@ -78964,17 +78977,14 @@ function createArrayFrom(tags) {
       });
 }
 
+function createResponderObjFrom(responderStr) {
+  const parts = responderStr.split(":");
+  return { [parts[0]]: parts[1], type: parts[2] };
+}
+
 function withoutEmptyProperties(obj) {
   return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v !== ""));
 }
-
-const createAlertRequestFrom = (alertDetails) => {
-  const request = {};
-  Object.assign(request, alertDetails, {
-    tags: createArrayFrom(alertDetails.tags),
-  });
-  return withoutEmptyProperties(request);
-};
 
 module.exports = {
   createAlertRequestFrom,
@@ -81135,7 +81145,7 @@ opsgenie.alertV2.create(alertRequest, function (error, result) {
   if (error) {
     core.setFailed(error.message);
   } else {
-    console.log(`Request sent for creating new alert: ${alertRequest.message}`);
+    console.log(`Request sent for creating new alert: ${result.requestId}`);
     core.setOutput("request_id", result.requestId);
   }
 });
