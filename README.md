@@ -28,6 +28,7 @@ This GitHub Action allows you to create alerts in [OpsGenie](https://www.atlassi
 - **\`tags\`**: Tags of the alert, separated by commas.
 - **\`priority\`**: Priority level of the alert. Possible values are P1, P2, P3, P4 and P5. Default value is P3.
 - **\`using_eu_url\`**: Set the action to use OpsGenie europe endpoint 'https://api.eu.opsgenie.com'. Defaults to false
+- **\`responders\`**: List of comma seperated targets that the alert will be routed to. (each target should be in the format: \<id type>:\<id>:\<responder type>)
 
 ### Outputs
 

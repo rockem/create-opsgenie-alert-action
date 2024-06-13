@@ -35,11 +35,13 @@ jobs:
           export REQUIRED_VALUES_MESSAGE="Alert created with required values"
           export DESCRIPTION="alert description"
           export SOURCE="create alert integration test"
+          export RESPONDER="name:NOC:team"
           echo "ALERT_ALIAS=$(echo -n $ALIAS)" >> $GITHUB_ENV
           echo "ALL_VALUES_MESSAGE=$(echo -n ALL_VALUES_MESSAGE)" >> $GITHUB_ENV
           echo "REQUIRED_VALUES_MESSAGE=$(echo -n REQUIRED_VALUES_MESSAGE)" >> $GITHUB_ENV
           echo "DESCRIPTION=$(echo -n $DESCRIPTION)" >> $GITHUB_ENV
           echo "SOURCE=$(echo -n $SOURCE)" >> $GITHUB_ENV
+          echo "RESPONDER=$(echo -n $RESPONDER)" >> $GITHUB_ENV
 
       - name: Create OpsGenie Alert with All Values
         id: create-alert-all-values
@@ -53,6 +55,7 @@ jobs:
           priority: P5
           tags: kuku
           using_eu_url: false
+          responders: ${{ env.RESPONDER }}
 
       - name: Assert all values alert created
         env:
@@ -65,7 +68,8 @@ jobs:
           "${{ env.DESCRIPTION }}" \
           P5 \
           kuku \
-          "${{ env.SOURCE }}"
+          "${{ env.SOURCE }}" \
+          "${{ env.RESPONDER }}"
 
       - name: Create OpsGenie Alert with Required Values
         id: create-alert-required-values

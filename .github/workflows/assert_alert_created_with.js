@@ -10,6 +10,7 @@ const description = process.argv[5];
 const priority = process.argv[6];
 const tag = process.argv[7];
 const source = process.argv[8];
+const responder = process.argv[9];
 
 opsgenie.configure({
   api_key: process.env.OPSGENIE_API_KEY,
@@ -36,10 +37,18 @@ function assert_created_alert(alert) {
   if (tag) {
     expect(alert.data.tags).to.include(tag);
   }
+  if (responder) {
+    // Sadly we can't validate responders with a free account
+  }
   compare_optional_str(alert.data.source, source);
 }
 
-opsgenie.alertV2.getRequestStatus(request_id, function (_, status) {
+opsgenie.alertV2.getRequestStatus(request_id, function (error, status) {
+  if (error) {
+    throw new Error(
+      `Failed to get status for alert with error: ${error.message}`,
+    );
+  }
   if (!status.data.success) {
     throw new Error("Alert wasn't (yet?) created");
   }
