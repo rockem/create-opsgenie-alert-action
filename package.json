@@ -12,10 +12,10 @@
     "preversion": "git pull"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "dependencies": {
-    "@actions/core": "^1.9.1",
+    "@actions/core": "^1.11.1",
     "opsgenie-sdk": "^0.5.0"
   },
   "devDependencies": {

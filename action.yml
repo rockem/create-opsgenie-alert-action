@@ -33,5 +33,5 @@ inputs:
     description: List of targets that the alert will be routed to
     required: false
 runs:
-  using: "node16"
+  using: "node20"
   main: "dist/index.js"
